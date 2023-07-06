@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('absensi_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_absensi');
+            $table->unsignedBigInteger('id_absensi');
             $table->string('nip');
             $table->string('nama');
             $table->string('jabatan');
             $table->text('ttd');
             $table->timestamps();
+
+            $table->foreign('id_absensi')->references('id')->on('absensis')->onDelete('cascade');
         });
     }
 

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('notulens', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id', true);
             $table->integer('id_user');
             $table->date('tgl_notulen');
             $table->string('agenda');
@@ -23,6 +23,16 @@ return new class extends Migration
             $table->string('tempat');
             $table->text('isi_notulen');
             $table->timestamps();
+        });
+
+        // Add primary key
+        Schema::table('notulens', function (Blueprint $table) {
+            $table->primary('id');
+        });
+
+        // Set id column to auto-increment
+        Schema::table('notulens', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement()->change();
         });
     }
 

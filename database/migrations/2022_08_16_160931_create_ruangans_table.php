@@ -14,12 +14,22 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ruangans', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id', true);
             $table->string('nama_ruangan');
             $table->string('kapasitas');
             $table->string('lokasi');
             $table->string('status')->nullable();
             $table->timestamps();
+        });
+
+        // Add primary key
+        Schema::table('ruangans', function (Blueprint $table) {
+            $table->primary('id');
+        });
+
+        // Set id column to auto-increment
+        Schema::table('ruangans', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement()->change();
         });
     }
 

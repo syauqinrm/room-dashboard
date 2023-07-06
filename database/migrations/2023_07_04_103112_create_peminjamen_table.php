@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('peminjamen', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id', true);
             $table->integer('id_user');
             $table->integer('id_ruangan');
             $table->date('tgl_booking');
@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('status_approv1');
             $table->string('status_approv2');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

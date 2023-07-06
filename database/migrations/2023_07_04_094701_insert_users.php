@@ -1,20 +1,17 @@
 <?php
 
-namespace Database\Seeders;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-
-class UserSeeder extends Seeder
+return new class extends Migration
 {
     /**
-     * Run the database seeds.
+     * Run the migrations.
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         DB::table('users')->insert([
             'nip' => '0000000000000000',
@@ -24,7 +21,7 @@ class UserSeeder extends Seeder
             'jabatan' => 'pegawai',
             'notelp' => '088888',
             'jenis_kelamin' => 'perempuan',
-            'level' => 'pegawai',
+            'level' => 'Pegawai',
             'password' => Hash::make('123'),
         ]);
         DB::table('users')->insert([
@@ -61,4 +58,14 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123'),
         ]);
     }
-}
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        DB::table('users')->truncate();
+    }
+};

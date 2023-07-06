@@ -8,6 +8,8 @@
     <td>{{ $item->ruangan->nama_ruangan }}</td>
     <td>{{ $item->agenda }}</td>
     <td>{{ $item->tgl_booking }}</td>
+    <td>{{ $item->jam_mulai}} -
+        {{ $item->jam_selesai }}</td>
     <td>
         @include('includes.status-table', [
             'status' => $item->status,
@@ -30,6 +32,7 @@
             -
         @endif
     </td>
+
     <td>
         @if ($level == 'Pegawai' && $item->status == 'Menunggu')
             <form id="formDelete{{ $item->id }}" action="{{ route('peminjaman.destroy', $item->id) }}" method="POST"

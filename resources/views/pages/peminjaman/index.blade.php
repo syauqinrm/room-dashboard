@@ -24,7 +24,7 @@
                                         class="fa fa-plus"></i> Tambah</a>
                                 @include('pages.peminjaman.create')
                             @endif
-                            @if ($level == 'Administrasi Umum')
+                            @if ($level != 'Pegawai')
                             <form action="/peminjaman" method="POST" class="mb-5">
                                 @csrf
                                 <div class="row align-items-end justify-content-center justify-content-md-start mb-md-3">
